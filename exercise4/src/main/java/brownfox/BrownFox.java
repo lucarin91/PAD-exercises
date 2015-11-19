@@ -85,15 +85,15 @@ public class BrownFox{
 			sum.set(0);
 			ArrayList<WritableMap> list = new ArrayList<WritableMap>();
 			for (WritableMap val : values) {
-				//log.info(sum.get());
-				list.add(val);
+				list.add(new WritableMap(val));
+				//log.info(""+val.<Text>get("w"));
 				sum.set(sum.get() + val.<IntWritable>get("n").get() );
 			}
+
 			log.info(sum.get());
 
 			for (WritableMap val : list) {
-				log.info("second for");
-				log.info(key + "$" + val.<Text>get("w") + "----"+ ""+val.<IntWritable>get("n") +"_"+ sum);
+				//log.info(key + "$" + val.<Text>get("w") + "----"+ ""+val.<IntWritable>get("n") +"_"+ sum);
 				context.write(new Text( key + "$" + val.<Text>get("w")), new Text( ""+val.<IntWritable>get("n") +"_"+ sum ));
 			}
 		}

@@ -30,8 +30,8 @@ class WritableMap implements Writable{
     m = new HashMap<Text,Writable>();
   }
 
-  WritableMap(Map<Text,Writable> m){
-    this.m = new HashMap<Text,Writable>(m);
+  WritableMap(WritableMap m){
+    this.m = new HashMap<Text,Writable>(m.m);
   }
 
   public <T extends Writable> T get(String key){
