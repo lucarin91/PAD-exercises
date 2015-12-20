@@ -1,0 +1,23 @@
+apply plugin: 'application'
+
+mainClassName = "conshash.TestConsistentHashing"
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+dependencies {
+    //compile files('./Peersim/djep-1.0.0.jar')
+    //compile files('./Peersim/jep-2.3.0.jar')
+    //compile files('./Peersim/peersim-1.0.5.jar')
+}
+
+task writeClasspath {
+    //buildDir.mkdirs()
+    new File(".", ".classpath").text = configurations.runtime.asPath + "\n"
+}
+tasks.build.dependsOn(writeClasspath)
+
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.7'
+}
